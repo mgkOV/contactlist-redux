@@ -1,0 +1,3 @@
+export default {
+  RECIEVE_CONTACTS: 'RECIEVE_CONTACTS'
+};
