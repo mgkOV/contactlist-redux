@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
-import { recieveContacts } from '../actions/actions';
+import { setContacts } from '../actions/actions';
 
 class App extends Component {
   componentDidMount() {
-    this.props.recieveContacts();
+    this.props.setContacts();
   }
 
   render() {
@@ -18,15 +18,16 @@ class App extends Component {
             <a className="brand-logo center">Список Контактов</a>
           </div>
         </nav>
-        <ContactForm />
+        <ContactForm {...this.props.contactToEdit} />
         <ContactList contacts={this.props.contacts} />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = ({ contacts }) => ({
-  contacts
+const mapDispatchToProps = ({ contacts, contactToEdit }) => ({
+  contacts,
+  contactToEdit
 });
 
-export default connect(mapDispatchToProps, { recieveContacts })(App);
+export default connect(mapDispatchToProps, { setContacts })(App);
